@@ -33,10 +33,6 @@
   }
 }
 
-.brick:hover {
-  border-color: var(--color-highlight);
-  box-shadow: 0px var(--shadow-md) var(--color-highlight);
-}
 .brick:active {
   box-shadow: none;
   transform: translateY(var(--shadow-md));
@@ -55,9 +51,6 @@
   border: none;
   min-width: 115px;
 }
-.pill:hover {
-  background-color: var(--color-red);
-}
 
 /* icon styles */
 .icon {
@@ -66,11 +59,25 @@
   background-color: var(--color-red);
   box-shadow: 0px var(--shadow-sm) var(--color-bs);
 }
-.icon:hover {
-  box-shadow: 0px var(--shadow-sm) var(--color-highlight);
-  border-color: var(--color-highlight);
-}
+
 .icon:active {
   box-shadow: none;
   transform: translateY(var(--shadow-sm));
+}
+
+/* sticky hover fix */
+@media (hover: hover) {
+  .icon:hover {
+    box-shadow: 0px var(--shadow-sm) var(--color-highlight);
+    border-color: var(--color-highlight);
+  }
+
+  .pill:hover {
+    background-color: var(--color-red);
+  }
+
+  .brick:hover {
+    border-color: var(--color-highlight);
+    box-shadow: 0px var(--shadow-md) var(--color-highlight);
+  }
 }
