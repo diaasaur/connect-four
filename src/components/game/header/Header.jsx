@@ -3,6 +3,7 @@ import PillButton from '../../ui/button/PillButton';
 import styles from './header.module.css';
 import logo from './../../../assets/images/logo.svg';
 import Pause from '../pause/Pause';
+import { AnimatePresence } from 'framer-motion';
 
 export default function Header() {
   const [{ paused }, dispatch] = useGame();
@@ -26,8 +27,11 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-
-      {paused && <Pause close={() => dispatch({ type: 'resume' })} />}
+      <AnimatePresence>
+        {paused && (
+          <Pause key="pause" close={() => dispatch({ type: 'resume' })} />
+        )}
+      </AnimatePresence>
     </header>
   );
 }

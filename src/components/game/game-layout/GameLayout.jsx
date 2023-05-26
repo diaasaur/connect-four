@@ -1,11 +1,19 @@
+import { motion } from 'framer-motion';
 import Footer from '../footer/Footer';
 import styles from './game-layout.module.css';
+import { genericVariants } from '../../../utils/animation-variants';
 
 export default function GameLayout({ children }) {
   return (
-    <div className={styles.wrapper}>
+    <motion.div
+      className={styles.wrapper}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={genericVariants}
+    >
       <div className={styles.layout}>{children}</div>
       <Footer />
-    </div>
+    </motion.div>
   );
 }

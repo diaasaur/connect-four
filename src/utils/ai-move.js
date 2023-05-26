@@ -14,8 +14,8 @@ const AI = PLAYER_TWO;
 const HUMAN = PLAYER_ONE;
 
 const MAX_DEPTH = {
-  [DIFFICULTY_MEDIUM]: 3,
-  [DIFFICULTY_HARD]: 7,
+  [DIFFICULTY_MEDIUM]: 0,
+  [DIFFICULTY_HARD]: 5,
 };
 
 export function aiMove(board, difficulty) {
