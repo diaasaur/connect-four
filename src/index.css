@@ -1,0 +1,109 @@
+/* custom variables */
+:root {
+  /* font sizes */
+  --font-size-xs: 1rem;
+  --font-size-sm: 1.25rem;
+  --font-size-md: 1.5rem;
+  --font-size-lg: 2rem;
+  --font-size-xl: 3.5rem;
+
+  /* colors */
+  --color-red: #fd6687;
+  --color-yellow: #ffce67;
+  --color-purple: #7945ff;
+  --color-dark-purple: #5c2dd5;
+}
+
+/* font */
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('./assets/fonts/SpaceGrotesk-VariableFont_wght.ttf')
+    format('truetype-variations');
+  font-weight: 500 900;
+}
+
+/* reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* app styles */
+.app {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1em;
+
+  font-size: var(--font-size-xs);
+  color: #fff;
+}
+
+.app.light {
+  background-color: var(--color-purple);
+}
+
+.app.dark {
+  background-color: var(--color-dark-purple);
+}
+
+/* utils */
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.red,
+.p1 {
+  background-color: var(--color-red);
+  color: #fff;
+}
+.yellow,
+.p2 {
+  background-color: var(--color-yellow);
+  color: #000;
+}
+.purple {
+  background-color: var(--color-purple);
+  color: #fff;
+}
+.dark-purple {
+  background-color: var(--color-dark-purple);
+  color: #fff;
+}
+.white {
+  background-color: #fff;
+  color: #000;
+}
