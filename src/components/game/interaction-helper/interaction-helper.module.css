@@ -1,0 +1,22 @@
+.helper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr;
+  position: absolute;
+  top: 0;
+  gap: 0.5em;
+  padding: 0 0.5em;
+}
+
+.column {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .helper {
+    gap: 1em;
+    padding: 0 1em;
+  }
+}

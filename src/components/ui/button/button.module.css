@@ -1,0 +1,76 @@
+.brick,
+.pill,
+.icon {
+  text-transform: uppercase;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+
+  transition: transform 0.1s ease-in-out;
+
+  --color-border: #000;
+  --color-highlight: var(--color-dark-purple);
+  --shadow-md: 10px;
+  --shadow-sm: 5px;
+  --color-bs: #000;
+}
+
+/* brick button styles */
+
+.brick {
+  font-size: var(--font-size-sm);
+  padding: 0.5em 0.75em;
+  border-radius: 0.75em;
+  border: 3px solid var(--color-border);
+  box-shadow: 0px 10px var(--color-border);
+  height: 70px;
+}
+@media screen and (min-width: 576px) {
+  .brick {
+    font-size: var(--font-size-md);
+  }
+}
+
+.brick:hover {
+  border-color: var(--color-highlight);
+  box-shadow: 0px var(--shadow-md) var(--color-highlight);
+}
+.brick:active {
+  box-shadow: none;
+  transform: translateY(var(--shadow-md));
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+/* pill button styles */
+.pill {
+  border-radius: 9999px;
+  padding: 0.5em 1.5em;
+  background-color: var(--color-dark-purple);
+  color: #fff;
+  border: none;
+  min-width: 115px;
+}
+.pill:hover {
+  background-color: var(--color-red);
+}
+
+/* icon styles */
+.icon {
+  border-radius: 100%;
+  border: 3px solid var(--color-border);
+  background-color: var(--color-red);
+  box-shadow: 0px var(--shadow-sm) var(--color-bs);
+}
+.icon:hover {
+  box-shadow: 0px var(--shadow-sm) var(--color-highlight);
+  border-color: var(--color-highlight);
+}
+.icon:active {
+  box-shadow: none;
+  transform: translateY(var(--shadow-sm));
+}

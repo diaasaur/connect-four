@@ -1,0 +1,12 @@
+.pause {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em 1em 1.5em;
+  gap: 3em;
+}
+
+.pause .title {
+  font-size: var(--font-size-xl);
+  text-align: center;
+  text-transform: uppercase;
+}

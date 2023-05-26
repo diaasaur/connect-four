@@ -1,0 +1,42 @@
+.rules {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 1em clamp(0px, 2.5%, 1em) 2.5em;
+  font-size: var(--font-size-xs);
+}
+
+.title {
+  font-size: var(--font-size-xl);
+  text-align: center;
+}
+.subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-purple);
+  padding-bottom: 0.5em;
+}
+.title,
+.subtitle {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  counter-reset: number;
+  list-style: none;
+}
+
+.step {
+  text-align: start;
+  counter-increment: number;
+}
+
+.step::before {
+  content: counter(number);
+  padding-right: 1em;
+  color: black;
+  font-weight: bold;
+}

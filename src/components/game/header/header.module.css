@@ -1,0 +1,27 @@
+.ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.li {
+  justify-self: center;
+  align-self: center;
+}
+.logo {
+  width: 40px;
+}
+
+.header {
+  grid-column: 1/-1;
+}
+
+@media screen and (min-width: 1024px) {
+  .ul {
+    width: 100%;
+    max-width: 632px;
+  }
+  .nav {
+    display: flex;
+    justify-content: center;
+  }
+}

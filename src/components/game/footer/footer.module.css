@@ -1,0 +1,6 @@
+.footer {
+  margin: -2.5em -1em -1em;
+  min-height: 160px;
+  background-color: var(--color-dark-purple);
+  border-radius: 60px 60px 0px 0px;
+}

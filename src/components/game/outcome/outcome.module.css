@@ -1,0 +1,26 @@
+.outcome {
+  width: 285px;
+  display: grid;
+  place-content: center;
+  position: absolute;
+
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+
+  padding: 1em 0 1.25em;
+
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 80%);
+}
+.status {
+  font-size: var(--font-size-xl);
+}
+
+@media screen and (min-width: 768px) {
+  .outcome {
+    transform: translate(-50%, 60%);
+  }
+}

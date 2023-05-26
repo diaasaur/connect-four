@@ -1,0 +1,24 @@
+.menu-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 3.5em 0 2.5em;
+  gap: 3em;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.title {
+  font-size: var(--);
+}
+
+@media screen and (min-width: 576px) {
+  .menu-wrapper {
+    padding: 3.5em min(5%, 2em) 2.5em;
+  }
+}

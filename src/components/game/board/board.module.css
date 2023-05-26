@@ -1,0 +1,26 @@
+.board {
+  position: relative;
+  grid-column: 1/-1;
+  place-self: center;
+}
+
+.masks {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.board > img {
+  max-width: unset;
+}
+.masks > img {
+  max-width: unset;
+}
+
+@media screen and (min-width: 1023px) {
+  .board {
+    grid-column: auto;
+    order: 2;
+  }
+}

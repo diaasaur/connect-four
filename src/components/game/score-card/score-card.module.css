@@ -1,0 +1,49 @@
+.score_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size-xs);
+  padding: 0.75em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.score {
+  font-size: var(--font-size-lg);
+}
+
+@media screen and (min-width: 768px) {
+  .score_card {
+    font-size: var(--font-size-sm);
+    padding: 1em;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5em 2em;
+    width: 100%;
+  }
+  .score {
+    font-size: var(--font-size-xl);
+  }
+
+  .p2 {
+    flex-direction: row-reverse;
+  }
+}
+
+/* >= large screen */
+@media screen and (min-width: 1024px) {
+  .score_card {
+    align-self: center;
+    flex-direction: column;
+    width: fit-content;
+    padding: 2em 1em 1em;
+    min-width: 140px;
+  }
+  .p1 {
+    order: 1;
+  }
+  .p2 {
+    order: 3;
+  }
+}

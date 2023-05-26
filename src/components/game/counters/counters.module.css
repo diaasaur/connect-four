@@ -1,0 +1,18 @@
+.counters {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  width: 100%;
+  height: 100%;
+
+  padding: 1.5% 1.167% 10.25%;
+
+  top: 0;
+  position: absolute;
+}
+
+@media screen and (min-width: 768px) {
+  .counters {
+    padding: 1.5% 1.15% 8.75%;
+  }
+}
