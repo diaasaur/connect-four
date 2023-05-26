@@ -65,7 +65,11 @@ function minimax({ board, isMaximizing, depth, alpha, beta, difficulty }) {
   if (depth === MAX_DEPTH[difficulty] || outcome) {
     if (outcome) {
       const { status, player } = outcome;
-      return status === STATUS_WIN ? (player === AI ? 1000000 : -1000000) : 0;
+      return status === STATUS_WIN
+        ? player === AI
+          ? 1000000 - depth
+          : depth - 1000000
+        : 0;
     }
     return calculateScore(board);
   }

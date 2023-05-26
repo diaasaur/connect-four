@@ -5,7 +5,7 @@ import p1 from './../../../assets/images/turn-background-red.svg';
 import p2 from './../../../assets/images/turn-background-yellow.svg';
 import styles from './turn-status.module.css';
 import { useEffect } from 'react';
-import { DISPLAY_TEXT, PLAYER_ONE } from '../../../utils/constants';
+import { PLAYER_ONE, TURN_TEXT } from '../../../utils/constants';
 
 export default function TurnStatus() {
   const [{ currentPlayer, countdown, paused }, dispatch] = useGame();
@@ -32,7 +32,7 @@ export default function TurnStatus() {
         height={150}
       />
       <div className={styles.text}>
-        <p className={styles.title}>{DISPLAY_TEXT[mode][currentPlayer]}</p>
+        <p className={styles.title}>{TURN_TEXT[mode][currentPlayer]}</p>
         <h1 className={styles.time}>{countdown}s</h1>
       </div>
     </div>

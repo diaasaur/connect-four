@@ -31,7 +31,7 @@ export const OUTCOME_TEXT = Object.freeze({
   },
   [MODE_PVC]: {
     [PLAYER_ONE]: 'win',
-    [PLAYER_TWO]: 'cpu',
+    [PLAYER_TWO]: 'wins',
   },
 });
 export const TURN_TEXT = Object.freeze({
