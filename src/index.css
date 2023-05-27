@@ -115,3 +115,7 @@ line {
   stroke-linecap: round;
   fill: transparent;
 }
+
+#portal {
+  z-index: 100000;
+}
