@@ -22,7 +22,7 @@ export default function SelectMode() {
           onClick={() => dispatch({ type: 'set mode', mode: MODE_PVC })}
         >
           play vs cpu
-          <img src={pvc} alt="Play vs CPU" />
+          <img src={pvc} alt="icon for player against cpu" />
         </BrickButton>
         <BrickButton
           type="yellow"
@@ -32,7 +32,7 @@ export default function SelectMode() {
           }}
         >
           play vs player
-          <img src={pvp} alt="Play vs Player" />
+          <img src={pvp} alt="icon for player against player" />
         </BrickButton>
         <BrickButton
           justifyContent="space-between"

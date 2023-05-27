@@ -18,7 +18,7 @@ export default function MenuWrapper({ useCard, children }) {
       <Wrapper className={styles['menu-wrapper']}>
         <div className={styles.header}>
           <h1 className="visually-hidden">Connect Four</h1>
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="Connect Four Logo" />
         </div>
         {children}
       </Wrapper>

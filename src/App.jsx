@@ -13,7 +13,7 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <div className={classNames('app', theme)}>
+    <main className={classNames('app', theme)}>
       <AnimatePresence mode="wait">
         <Routes key={location.pathname} location={location}>
           <Route path="/rules" element={<Rules />} />
@@ -27,6 +27,6 @@ export default function App() {
           />
         </Routes>
       </AnimatePresence>
-    </div>
+    </main>
   );
 }
