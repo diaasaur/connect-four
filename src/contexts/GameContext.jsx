@@ -56,8 +56,6 @@ function gameReducer(state, action) {
       return { ...state, paused: true };
     case 'resume':
       return { ...state, paused: false };
-    case 'animation complete':
-      return { ...state, isAnimating: false };
     case 'set countdown':
       return { ...state, countdown: action.countdown };
     case 'set marker':
@@ -80,11 +78,14 @@ function gameReducer(state, action) {
         openingPlayer,
       };
     }
-    case 'make move': {
-      const { currentPlayer, scores, openingPlayer } = state;
-      const { board: newBoard } = action;
+    case 'make move':
+      return { ...state, board: action.board, isAnimating: true };
+    case 'animation complete': {
+      // when counter animation is completed,
+      // calculate win, switch turns etc
+      const { currentPlayer, scores, board, openingPlayer } = state;
 
-      const outcome = getWinner(newBoard);
+      const outcome = getWinner(board);
 
       const gameover = Boolean(outcome);
 
@@ -103,15 +104,13 @@ function gameReducer(state, action) {
         ...state,
         outcome,
         gameover,
-        board: newBoard,
-        isAnimating: true,
+        isAnimating: false,
         countdown: COUNTDOWN,
         scores: newScores,
         currentPlayer: newCurrentPlayer,
         openingPlayer: newOpeningPlayer,
       };
     }
-
     default:
       throw new Error('unknown action type');
   }
