@@ -9,18 +9,30 @@ import whiteSmall from './../../../assets/images/board-layer-white-small.svg';
 
 import styles from './board.module.css';
 
+const imageProps = {
+  blackLarge: { src: blackLarge, width: 632, height: 594 },
+  blackSmall: { src: blackSmall, width: 335, height: 320 },
+  whiteLarge: { src: whiteLarge, width: 632, height: 584 },
+  whiteSmall: {
+    src: whiteSmall,
+    width: 335,
+    height: 310,
+  },
+};
+
 export default function Board() {
   const [{ isSmallScreen, isLargeScreen }] = useConfig();
-  const blackLayerImg = isSmallScreen ? blackSmall : blackLarge;
-  const whiteLayerImg = isSmallScreen ? whiteSmall : whiteLarge;
 
   return (
     <div className={styles.board}>
-      <img src={blackLayerImg} alt="board layer black" />
+      <img
+        {...imageProps[isSmallScreen ? 'blackSmall' : 'blackLarge']}
+        alt="board layer black"
+      />
       <div className={styles.masks}>
         <Counters />
         <img
-          src={whiteLayerImg}
+          {...imageProps[isSmallScreen ? 'whiteSmall' : 'whiteLarge']}
           alt="board layer white"
           style={{ position: 'absolute' }}
         />
