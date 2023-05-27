@@ -2,11 +2,13 @@ import { getAvailablePositions } from './available-positions';
 import { calculateScore } from './score';
 import { getWinner } from './win-tie';
 import {
+  COLS,
   DIFFICULTY_EASY,
   DIFFICULTY_HARD,
   DIFFICULTY_MEDIUM,
   PLAYER_ONE,
   PLAYER_TWO,
+  STATUS_TIE,
   STATUS_WIN,
 } from './constants';
 
@@ -18,18 +20,23 @@ const MAX_DEPTH = {
   [DIFFICULTY_HARD]: 5,
 };
 
+const WIN_SCORES = {
+  [AI]: 100000,
+  [HUMAN]: -100000,
+};
+
 export function aiMove(board, difficulty) {
   const positions = getAvailablePositions(board);
   let bestScore = -Infinity;
   let bestMove = positions[0];
 
-  // easy difficulty
+  // easy difficulty, pick a random possible move
   if (difficulty === DIFFICULTY_EASY) {
     bestMove = positions[Math.floor(Math.random() * positions.length)];
   } else {
-    // medium | hard difficulty use minimax to get bestMove
+    // medium || hard difficulty use minimax to get the bestMove
     positions.forEach(({ row, column }) => {
-      board[row][column] = AI;
+      board[row][column] = AI; // make move
 
       let score = minimax({
         board,
@@ -45,76 +52,68 @@ export function aiMove(board, difficulty) {
       if (score > bestScore) {
         bestScore = score;
         bestMove = { row, column };
+      } else if (score === bestScore) {
+        // tie-break
+        if (Math.random() < 0.5) {
+          bestMove = { row, column }; // randomly select the new move
+        } else if (column === Math.floor(COLS / 2)) {
+          bestMove = { row, column }; // prioritize the center column
+        } else if (row > bestMove.row) {
+          bestMove = { row, column }; // prioritize filling rows
+        }
       }
-
-      console.log({ column, score });
     });
   }
 
   // make the best move
   board[bestMove.row][bestMove.column] = AI;
-
-  console.log(JSON.stringify(board));
   return board;
 }
 
 // minimax
 function minimax({ board, isMaximizing, depth, alpha, beta, difficulty }) {
+  const outcome = getWinner(board);
   // terminating condition
-  const outcome = getWinner(board); // check if board wins
   if (depth === MAX_DEPTH[difficulty] || outcome) {
-    if (outcome) {
-      const { status, player } = outcome;
-      return status === STATUS_WIN
-        ? player === AI
-          ? 1000000 - depth
-          : depth - 1000000
-        : 0;
+    if (outcome && outcome.status === STATUS_WIN) {
+      // win
+      return outcome.player === AI
+        ? WIN_SCORES[AI] - depth
+        : depth + WIN_SCORES[HUMAN];
+    } else if (outcome && outcome.status === STATUS_TIE) {
+      return 0; // tie
+    } else {
+      // calculate score for the board at max depth
+      return calculateScore(board);
     }
-    return calculateScore(board);
   }
-  const positions = getAvailablePositions(board);
 
-  // ai's move
-  if (isMaximizing) {
-    let bestScore = -Infinity;
-    for (const { row, column } of positions) {
-      board[row][column] = AI;
-      let score = minimax({
-        board,
-        alpha,
-        beta,
-        depth: depth + 1,
-        isMaximizing: false,
-        difficulty,
-      });
-      board[row][column] = null; // undo
+  const positions = getAvailablePositions(board);
+  let bestScore = isMaximizing ? -Infinity : Infinity;
+  const player = isMaximizing ? AI : HUMAN;
+
+  for (const { row, column } of positions) {
+    board[row][column] = player; // make move
+    let score = minimax({
+      board,
+      alpha,
+      beta,
+      depth: depth + 1,
+      isMaximizing: !isMaximizing,
+      difficulty,
+    });
+    board[row][column] = null; // undo move
+
+    if (isMaximizing) {
       bestScore = Math.max(score, bestScore);
       alpha = Math.max(score, alpha);
-
-      if (bestScore >= beta) break;
-    }
-    return bestScore;
-  } else {
-    // human's move
-    let bestScore = Infinity;
-    for (const { row, column } of positions) {
-      board[row][column] = HUMAN;
-      let score = minimax({
-        board,
-        alpha,
-        beta,
-        depth: depth + 1,
-        isMaximizing: true,
-        difficulty,
-      });
-      board[row][column] = null; // undo
-
+    } else {
       bestScore = Math.min(score, bestScore);
       beta = Math.min(score, beta);
-
-      if (bestScore <= alpha) break;
     }
-    return bestScore;
+
+    if (beta <= alpha) break;
   }
+
+  return bestScore;
 }
