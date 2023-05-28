@@ -46,15 +46,11 @@ export function aiMove(board, difficulty) {
         bestScore = score;
         bestMove = { row, column };
       }
-
-      console.log({ column, score });
     });
   }
 
   // make the best move
   board[bestMove.row][bestMove.column] = AI;
-
-  console.log(JSON.stringify(board));
   return board;
 }
 

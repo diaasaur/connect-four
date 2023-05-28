@@ -6,6 +6,7 @@ import Game from './pages/Game';
 import Menu from './pages/Menu';
 import Rules from './pages/rules/Rules';
 import { AnimatePresence } from 'framer-motion';
+import ImagePreloader from './components/ImagePreloader';
 
 export default function App() {
   const [theme] = useTheme();
@@ -27,6 +28,7 @@ export default function App() {
           />
         </Routes>
       </AnimatePresence>
+      <ImagePreloader />
     </main>
   );
 }
